@@ -6,19 +6,21 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.*;
-import rocks.items.Container;
 import rocks.items.Item;
+import rocks.items.Items;
 
 
 public class Main extends Application {
 
   @Override public void start( final Stage stage ) throws Exception {
 
-    TreeItem<String> root = new Container( Container.UNLIMITED, "root_tree_node" );
+    Items.parse();
+
+    TreeItem<String> root = new Item( Item.UNLIMITED, "root_tree_node" );
     root.setExpanded( true );
-    root.getChildren().add( PlayerView.ground );
+    root.getChildren().add( PlayerView.world );
     root.getChildren().add( PlayerView.hands );
-    PlayerView.ground.setExpanded( true );
+    PlayerView.world.setExpanded( true );
     PlayerView.hands.setExpanded( true );
 
     PlayerView.inventoryTreeView.setRoot( root );

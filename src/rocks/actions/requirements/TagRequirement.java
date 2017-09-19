@@ -46,4 +46,8 @@ public class TagRequirement implements Requirement {
         return false;
     }
   }
+
+  @Override public String toString() {
+    return relationship + " is " + String.join( " ", requiredTags );
+  }
 }

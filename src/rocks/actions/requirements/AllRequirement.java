@@ -2,10 +2,12 @@ package rocks.actions.requirements;
 
 import rocks.items.Item;
 
-public class AndRequirement implements Requirement {
+import java.util.Arrays;
+
+public class AllRequirement implements Requirement {
   private Requirement[] allOfRequirements;
 
-  public AndRequirement( Requirement... requirements ) {
+  public AllRequirement( Requirement... requirements ) {
     this.allOfRequirements = requirements;
   }
 
@@ -16,5 +18,9 @@ public class AndRequirement implements Requirement {
       }
     }
     return true;
+  }
+
+  @Override public String toString() {
+    return "all " + Arrays.toString( allOfRequirements );
   }
 }

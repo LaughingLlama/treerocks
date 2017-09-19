@@ -2,10 +2,12 @@ package rocks.actions.requirements;
 
 import rocks.items.Item;
 
-public class OrRequirement implements Requirement {
+import java.util.Arrays;
+
+public class AnyRequirement implements Requirement {
   private Requirement[] anyOfRequirements;
 
-  public OrRequirement( Requirement... requirements ) {
+  public AnyRequirement( Requirement... requirements ) {
     this.anyOfRequirements = requirements;
   }
 
@@ -17,4 +19,9 @@ public class OrRequirement implements Requirement {
     }
     return false;
   }
+
+  @Override public String toString() {
+    return "any " + Arrays.toString( anyOfRequirements );
+  }
+
 }

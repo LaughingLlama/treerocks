@@ -11,10 +11,22 @@ import java.util.*;
 
 
 public class Item extends TreeItem<String> {
+  public static final int UNLIMITED = -1;
+
   private static final Map<UUID,Item> allItems = new HashMap<>();
 
   final private UUID id;
+  private int storage; // todo
   final private ArrayList<String> tags = new ArrayList<>();
+
+
+  public Item(
+    int storageSize,
+    String... itemTags
+  ) {
+    this( itemTags );
+    this.storage = storageSize;
+  }
 
   public Item(
     String... itemTags
@@ -51,7 +63,7 @@ public class Item extends TreeItem<String> {
   }
 
   @Override public String toString() {
-    return tags.get( 0 ) + " " + id;
+    return String.join( " ", tags ) + " " + id;
   }
 
   public static Item getByID( UUID id ) {
